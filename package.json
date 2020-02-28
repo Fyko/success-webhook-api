@@ -1,0 +1,84 @@
+{
+    "name": "success-webhook-api",
+    "version": "1.0.0",
+    "description": "🏆 an API to recieve requests from automation software and send them to a discord webhook",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "pnpm run cleardir && pnpm run compile",
+        "cleardir": "rimraf dist/*",
+        "compile": "tsc",
+        "lint": "eslint src --ext .ts",
+        "lint:fix": "eslint src --fix --ext .ts",
+        "start": "pnpm run build && node .",
+        "test": "pnpm run lint"
+    },
+    "author": "Carter Himmel <me@fyko.net>",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@discordjs/collection": "^0.1.5",
+        "body-parser": "^1.19.0",
+        "discord-webhook-ts": "^3.0.3",
+        "express": "^4.17.1",
+        "helmet": "^3.21.3"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-angular": "^8.3.4",
+        "@types/body-parser": "^1.19.0",
+        "@types/express": "^4.17.2",
+        "@types/helmet": "^0.0.45",
+        "@types/node": "^13.7.4",
+        "@typescript-eslint/eslint-plugin": "^2.20.0",
+        "@typescript-eslint/parser": "^2.20.0",
+        "dotenv": "^8.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-marine": "^6.0.0",
+        "eslint-config-prettier": "^6.9.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "husky": "^4.2.3",
+        "node-fetch": "^2.6.0",
+        "prettier": "^1.19.1",
+        "rimraf": "^3.0.2",
+        "tslib": "^1.11.0",
+        "typescript": "^3.8.2",
+        "winston": "^3.2.1"
+    },
+    "eslintConfig": {
+        "extends": "marine/prettier/node",
+        "rules": {
+            "comma-dangle": [
+                "error",
+                "always-multiline"
+            ]
+        }
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-angular"
+        ],
+        "rules": {
+            "type-enum": [
+                2,
+                "always",
+                [
+                    "chore",
+                    "build",
+                    "ci",
+                    "docs",
+                    "feat",
+                    "fix",
+                    "perf",
+                    "refactor",
+                    "revert",
+                    "style",
+                    "test"
+                ]
+            ]
+        }
+    }
+}
